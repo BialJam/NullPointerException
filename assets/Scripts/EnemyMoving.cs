@@ -20,6 +20,7 @@ public class EnemyMoving : MonoBehaviour
 		enemyBody = gameObject.GetComponent<Rigidbody2D> ();
 		startPosition = enemyBody.position;
 		isPlayerInRange = false;
+		isLeft = true;
 		playerObject = GameObject.Find ("hero");
 		playerBody = playerObject.GetComponent<Rigidbody2D> ();
 	}
@@ -59,7 +60,8 @@ public class EnemyMoving : MonoBehaviour
 				enemyBody.AddForce (-Vector2.left * speed);
 			else
 				enemyBody.AddForce (Vector2.left * speed);
-		}	
+		}
 
+		Debug.Log (isPlayerInRange);
 	}
 }
