@@ -6,12 +6,13 @@ public class LifesUpdate : MonoBehaviour {
 
     void Start()
     {
-        GetComponent<Text>().text += "5";
 
+        UpdateLifes();
     }
 
     public void UpdateLifes()
     {
-        GetComponent<Text>().text += PlayerStats.Lifes.ToString();
+
+        GetComponent<Text>().text = "Lifes:" + PlayerStats.Lifes.ToString();
     }
 }

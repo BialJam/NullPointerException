@@ -12,10 +12,7 @@ public class NewBehaviourScript : MonoBehaviour {
 	}
 
 	void OnTriggerEnter2D (Collider2D player) {
-		if (player.name == "hero") {
-			PlayerStats.Lifes --;
-			SceneManager.LoadScene(PlayerStats.ActualScene);
-		}
+		
 	}
 
 }

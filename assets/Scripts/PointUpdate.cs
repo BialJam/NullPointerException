@@ -5,12 +5,13 @@ using UnityEngine.UI;
 public class PointUpdate : MonoBehaviour {
 
 	void Start () {
-        GetComponent<Text>().text += "0";
+
+        UpdatePoints();
 
     }
 	
 	public void UpdatePoints() {
-		GetComponent<Text>().text += PlayerStats.Points.ToString();
+		GetComponent<Text>().text = "Points: " + PlayerStats.Points.ToString();
 	}
 
 }

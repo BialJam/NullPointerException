@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.SceneManagement;
 
 public class KillEnemy : MonoBehaviour {
 
@@ -13,8 +14,14 @@ public class KillEnemy : MonoBehaviour {
 	
 	}
 
-	void OnTriggerEnter2D (Collider2D killPoint) {
-		if (killPoint.name == "killPoint")
+	void OnTriggerEnter2D (Collider2D element) {
+		if (element.name == "killPoint")
 			Destroy (gameObject);
-	}
+
+        if (element.name == "hero")
+        {
+            PlayerStats.Lifes--;
+            SceneManager.LoadScene(PlayerStats.ActualScene);
+        }
+    }
 }

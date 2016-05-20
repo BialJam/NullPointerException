@@ -1,11 +1,12 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class PlayerStats {
+public static class PlayerStats {
 
     public static int lifes = 5;
     public static string actualScene = "mainScene";
     public static int points = 0;
+
 
     public static int Lifes
     {
@@ -17,7 +18,8 @@ public class PlayerStats {
         set
         {
             lifes = value;
-            GameObject.Find("Points").GetComponent<PointUpdate>().UpdatePoints();
+            GameObject.Find("Lifes").GetComponent<LifesUpdate>().UpdateLifes();
+            
         }
     } 
     public static string ActualScene
@@ -40,7 +42,7 @@ public class PlayerStats {
         set
         {
             points = value;
-            GameObject.Find("Lifes").GetComponent<LifesUpdate>().UpdateLifes();
+            GameObject.Find("Points").GetComponent<PointUpdate>().UpdatePoints();
         }
     }
 

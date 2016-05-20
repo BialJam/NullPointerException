@@ -27,7 +27,6 @@ public class EnemyMoving : MonoBehaviour
 
 	void Update ()
 	{
-
 		playerPosition = playerBody.position;
 		currentPosition = enemyBody.position;
 
