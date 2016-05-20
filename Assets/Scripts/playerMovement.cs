@@ -20,17 +20,14 @@ public class playerMovement : MonoBehaviour {
 	void Update () {
 		if (Input.GetKey (KeyCode.A))
 			playerBody.AddForce (Vector2.left * moveSpeedX);
-		else if (Input.GetKey (KeyCode.D))
+		if (Input.GetKey (KeyCode.D))
 			playerBody.AddForce (-Vector2.left * moveSpeedX);
-		else if (Input.GetKey (KeyCode.W)) {
+		if (Input.GetKey (KeyCode.W)) {
 			if (isJumping==false) {
 				playerBody.AddForce (Vector2.up * moveSpeedY);
 				isJumping = true;
 			}
 		}
-		else if (Input.GetKey (KeyCode.S))
-			playerBody.AddForce (-Vector2.up * moveSpeedY);
-
 
 
 
