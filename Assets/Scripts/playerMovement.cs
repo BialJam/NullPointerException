@@ -6,7 +6,7 @@ public class playerMovement : MonoBehaviour {
 	public float moveSpeedY;
 	private Rigidbody2D playerBody;
 	public bool isJumping=false;
-    private bool dirToRight = true;
+    private bool dirToRight=true;
     Animator anim;
     public float speed;
 
@@ -34,6 +34,10 @@ public class playerMovement : MonoBehaviour {
 				isJumping = true;
 			}
 		}
+        if (Input.GetKey(KeyCode.Space))
+        {
+            shoot();
+        }
 	}
 
     void Flip()
@@ -42,6 +46,11 @@ public class playerMovement : MonoBehaviour {
         Vector3 heroScale = gameObject.transform.localScale;
         heroScale.x *= -1;
         gameObject.transform.localScale = heroScale;
+    }
+
+    void shoot ()
+    {
+
     }
 
 	}
