@@ -20,7 +20,7 @@ public class EnemyMoving : MonoBehaviour
 		enemyBody = gameObject.GetComponent<Rigidbody2D> ();
 		startPosition = enemyBody.position;
 		isPlayerInRange = false;
-		isLeft = true;
+		isLeft = false;
 		playerObject = GameObject.Find ("hero");
 		playerBody = playerObject.GetComponent<Rigidbody2D> ();
 	}
@@ -33,12 +33,12 @@ public class EnemyMoving : MonoBehaviour
 
 		if (!isPlayerInRange) {
 			if (isLeft) {
-				if (currentPosition.x <= startPosition.x + range)
+				if (currentPosition.x < startPosition.x + range)
 					enemyBody.AddForce (-Vector2.left * speed);
 				else
 					isLeft = false;
 			} else {
-				if (currentPosition.x >= startPosition.x - range)
+				if (currentPosition.x > startPosition.x - range)
 					enemyBody.AddForce (Vector2.left * speed);
 				else
 					isLeft = true;
@@ -52,16 +52,9 @@ public class EnemyMoving : MonoBehaviour
 			} else if (playerPosition.x - currentPosition.x > 0) {
 				enemyBody.AddForce (-Vector2.left * speed);
 				isPlayerInRange = true;
-			}
+			} 
 		} else { 
 			isPlayerInRange = false;
-			// going to start position
-			if (currentPosition.x < startPosition.x)
-				enemyBody.AddForce (-Vector2.left * speed);
-			else
-				enemyBody.AddForce (Vector2.left * speed);
-		}
-
-		Debug.Log (isPlayerInRange);
 	}
+}
 }
