@@ -56,6 +56,9 @@ public class EnemyMoving : MonoBehaviour
 		} else { 
 			isPlayerInRange = false;
 
+
+
+
 	}
 }
 }
