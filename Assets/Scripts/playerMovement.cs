@@ -3,21 +3,46 @@ using System.Collections;
 
 public class playerMovement : MonoBehaviour {
 
-    private float movex=0;
-    private float movey=0;
-    private float moveSpeed=5;
-
-
+	public float moveSpeedX = 5;
+	public float moveSpeedY = 10;
+	private Rigidbody2D playerBody;
+	public int speed;
+	public bool isJumping=false;
 	// Use this for initialization
 	void Start () {
-	    
+		playerBody = gameObject.GetComponent<Rigidbody2D>();
+		//canJump = transform.GetChild (0).gameObject.GetComponent<Collider2D> ();
 	}
-	
-	// Update is called once per frame
-	void FixedUpdate () {
-        movex = Input.GetAxis("Horizontal");
-        movey = Input.GetAxis("Vertical");
+	void OnCollisionEnter2D(Collision2D coll) {
+		if (coll.gameObject.tag == "canJump") {
+			isJumping = false;
+			Debug.Log ("jump true");
+		} 
+	}
 
-        GetComponent<Rigidbody2D>().velocity = new Vector2(movex * moveSpeed, movey * moveSpeed);
+	// Update is called once per frame
+	void Update () {
+		Debug.Log (isJumping);
+		if (Input.GetKey (KeyCode.A))
+			playerBody.AddForce (Vector2.left * moveSpeedX);
+		else if (Input.GetKey (KeyCode.D))
+			playerBody.AddForce (-Vector2.left * moveSpeedX);
+		else if (Input.GetKey (KeyCode.W)) {
+			if (isJumping==false) {
+				playerBody.AddForce (Vector2.up * moveSpeedY);
+				isJumping = true;
+			}
+		}
+		//just to test - delete after tests
+		else if (Input.GetKey (KeyCode.S))
+			playerBody.AddForce (-Vector2.up * moveSpeedY);
+
+
+
+
+
+
 	}
-}
+
+	}
+
