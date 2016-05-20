@@ -6,7 +6,7 @@ public class DevidedQuestions : MonoBehaviour {
 	int firstNumber;
 	int secondNumber;
 	int answer=0;
-	string stringToEdit="1";
+	string userAnswer="";
 	bool answerState = false;
 
 	// Use this for initialization
@@ -21,14 +21,14 @@ public class DevidedQuestions : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if (stringToEdit == System.Convert.ToString(answer))
+		if (userAnswer == System.Convert.ToString(answer))
 			answerState = true;
 	}
 
 	void OnGUI() {
 		GUI.Label(new Rect(10, 10, 100, 20), System.Convert.ToString(firstNumber)+" / "
 			+System.Convert.ToString(secondNumber));
-		stringToEdit = GUI.TextField(new Rect(110, 10, 50, 20), stringToEdit, 10);
+		userAnswer = GUI.TextField(new Rect(110, 10, 50, 20), userAnswer, 10);
 		if (answerState == true) {
 			GUI.Label(new Rect(100,100,200,20),"CORRECT ANSWER MAN!!!!!!!!!!");
 		}
