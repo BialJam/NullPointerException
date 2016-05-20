@@ -3,13 +3,16 @@ using System.Collections;
 
 public class playerMovement : MonoBehaviour {
 
-	public float moveSpeedX = 5;
-	public float moveSpeedY = 10;
+	public float moveSpeedY;
 	private Rigidbody2D playerBody;
-	public int speed;
 	public bool isJumping=false;
+    private bool dirToRight = true;
+    Animator anim;
+    public float speed;
+
 	void Start () {
 		playerBody = gameObject.GetComponent<Rigidbody2D>();
+        anim = gameObject.GetComponent<Animator>();
 	}
 	void OnCollisionEnter2D(Collision2D coll) {
 		if (coll.gameObject.tag == "canJump") {
@@ -18,22 +21,28 @@ public class playerMovement : MonoBehaviour {
 	}
 
 	void Update () {
-		if (Input.GetKey (KeyCode.A))
-			playerBody.AddForce (Vector2.left * moveSpeedX);
-		if (Input.GetKey (KeyCode.D))
-			playerBody.AddForce (-Vector2.left * moveSpeedX);
-		if (Input.GetKey (KeyCode.W)) {
+        float moveHorizontal = Input.GetAxis("Horizontal");
+        playerBody.velocity = new Vector2(moveHorizontal * speed, playerBody.velocity.y);
+        if (moveHorizontal < 0 && dirToRight)
+            Flip();
+        if (moveHorizontal > 0 && !dirToRight)
+            Flip();
+        anim.SetFloat("speed", Mathf.Abs(moveHorizontal));
+        if (Input.GetKey (KeyCode.UpArrow) || Input.GetKey(KeyCode.W)) {
 			if (isJumping==false) {
 				playerBody.AddForce (Vector2.up * moveSpeedY);
 				isJumping = true;
 			}
 		}
-
-
-
-
-
 	}
+
+    void Flip()
+    {
+        dirToRight = !dirToRight;
+        Vector3 heroScale = gameObject.transform.localScale;
+        heroScale.x *= -1;
+        gameObject.transform.localScale = heroScale;
+    }
 
 	}
 
