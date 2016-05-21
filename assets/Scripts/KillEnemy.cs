@@ -15,8 +15,11 @@ public class KillEnemy : MonoBehaviour {
 	}
 
 	void OnTriggerEnter2D (Collider2D element) {
-		if (element.name == "killPoint")
-			Destroy (gameObject);
+		if (element.name == "killPoint" || element.tag == "bullet")
+        {
+            Destroy(gameObject);
+        }
+			
 
         if (element.name == "hero")
         {
