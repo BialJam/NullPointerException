@@ -5,12 +5,12 @@ using UnityEngine.SceneManagement;
 public class KillEnemy : MonoBehaviour {
 
 	public GameObject enemy;
-	public GameObject dupEnemy1 = null;
-	public GameObject dupEnemy2 = null;
+	private GameObject dupEnemy1 = null;
+	private GameObject dupEnemy2 = null;
 	public bool duplicated = false;
 	// Use this for initialization
 	void Start () {
-		enemy = GameObject.FindWithTag ("enemy");
+		//enemy = GameObject.FindWithTag ("enemy");
 	}
 	
 	// Update is called once per frame
@@ -29,10 +29,9 @@ public class KillEnemy : MonoBehaviour {
 		if (coll.name == "killPoint")
 		if (duplicated == false) {
 			
-
-			dupEnemy1 = Instantiate (Resources.Load ("prefab_Enemy"), new Vector3(enemy.transform.position.x-5,enemy.transform.position.y,enemy.transform.position.z), Quaternion.identity) as GameObject;
+			dupEnemy1 = Instantiate (Resources.Load (enemy.name), new Vector3(enemy.transform.position.x-5,enemy.transform.position.y,enemy.transform.position.z), Quaternion.identity) as GameObject;
 			dupEnemy1.GetComponent<KillEnemy> ().duplicated = true;
-			dupEnemy2 = Instantiate (Resources.Load("prefab_Enemy"),new Vector3(enemy.transform.position.x+5,enemy.transform.position.y,enemy.transform.position.z),Quaternion.identity) as GameObject;
+			dupEnemy2 = Instantiate (Resources.Load(enemy.name),new Vector3(enemy.transform.position.x+5,enemy.transform.position.y,enemy.transform.position.z),Quaternion.identity) as GameObject;
 			dupEnemy2.GetComponent<KillEnemy> ().duplicated = true;
 			Destroy (gameObject);
 			duplicated = true;

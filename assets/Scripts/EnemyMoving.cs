@@ -14,6 +14,7 @@ public class EnemyMoving : MonoBehaviour
 	private bool isLeft;
 	private Vector2 playerPosition;
 	private bool isPlayerInRange;
+	private Animation anim;
 
 	void Start ()
 	{
@@ -23,6 +24,7 @@ public class EnemyMoving : MonoBehaviour
 		isLeft = false;
 		playerObject = GameObject.Find ("hero");
 		playerBody = playerObject.GetComponent<Rigidbody2D> ();
+		anim = this.GetComponent<Animation> ();
 	}
 
 	void Update ()
@@ -33,14 +35,22 @@ public class EnemyMoving : MonoBehaviour
 		if (!isPlayerInRange) {
 			if (isLeft) {
 				if (currentPosition.x < startPosition.x + range)
-					enemyBody.velocity = new Vector2(-Vector2.left.x * speed, enemyBody.velocity.y);
-				else
+					enemyBody.velocity = new Vector2 (-Vector2.left.x * speed, enemyBody.velocity.y);
+				else {
 					isLeft = false;
+					Vector3 scale = anim.transform.localScale;
+					scale.x *= -1;
+					anim.transform.localScale = scale;
+				}
 			} else {
 				if (currentPosition.x > startPosition.x - range)
-					enemyBody.velocity = new Vector2(Vector2.left.x * speed, enemyBody.velocity.y);
-				else
+					enemyBody.velocity = new Vector2 (Vector2.left.x * speed, enemyBody.velocity.y);
+				else {
 					isLeft = true;
+					Vector3 scale = anim.transform.localScale;
+					scale.x *= -1;
+					anim.transform.localScale = scale;
+				}
 			}
 		} 
 
