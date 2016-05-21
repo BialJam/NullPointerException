@@ -3,6 +3,7 @@ using System.Collections;
 
 public class EnemyMoving : MonoBehaviour
 {
+
 	public float range;
 	public float speed;
 	public float seeRange;
