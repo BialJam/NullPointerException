@@ -1,37 +1,47 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class DevidedQuestions : MonoBehaviour {
 
 	int firstNumber;
 	int secondNumber;
 	int answer=0;
-	string userAnswer="";
+	int userAnswer=0;
 	bool answerState = false;
+
+	private Text firstNumberText;
+	private Text secondNumberText;
+	private InputField inputField;
 
 	// Use this for initialization
 	void Start () {
-		int fn = Random.Range (1, 100);
-		int sn = Random.Range(1,100);
+
+		firstNumberText = GameObject.Find ("FirstNumber").GetComponent<Text>();
+		secondNumberText = GameObject.Find ("SecondNumber").GetComponent<Text>();
+		inputField = GameObject.Find ("InputField").GetComponent<InputField> ();
+
+		int fn = Random.Range (1, 40);
+		int sn = Random.Range(1,20);
 		firstNumber = fn * sn;
 		secondNumber = fn;
 		answer = sn;
 
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		if (userAnswer == System.Convert.ToString(answer))
-			answerState = true;
+		firstNumberText.text = System.Convert.ToString (firstNumber);
+		secondNumberText.text = System.Convert.ToString (secondNumber);
+
 	}
 
-	void OnGUI() {
-		GUI.Label(new Rect(10, 10, 100, 20), System.Convert.ToString(firstNumber)+" / "
-			+System.Convert.ToString(secondNumber));
-		userAnswer = GUI.TextField(new Rect(110, 10, 50, 20), userAnswer, 10);
-		if (answerState == true) {
-			GUI.Label(new Rect(100,100,200,20),"CORRECT ANSWER MAN!!!!!!!!!!");
+	public void checkAnswer() {
+		userAnswer = System.Convert.ToInt32(inputField.text);
+
+		if (userAnswer == answer)
+			SceneManager.LoadScene (PlayerStats.actualScene + 1);
+		else {
+			PlayerStats.lifes--;
+			SceneManager.LoadScene (PlayerStats.actualScene + 1);
 		}
-
 	}
+		
 }
