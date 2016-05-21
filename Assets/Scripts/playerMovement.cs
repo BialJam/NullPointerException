@@ -53,10 +53,11 @@ public class playerMovement : MonoBehaviour {
 
     void Flip()
     {
-        Vector3 heroScale = gameObject.transform.localScale;
-        heroScale.x *= -1;
-        gameObject.transform.localScale = heroScale;
-        
+		SpriteRenderer renderer = this.GetComponent<SpriteRenderer> ();
+		if (renderer.flipX == true) {
+			renderer.flipX = false;
+		} else
+			renderer.flipX = true;
     }
 
     void shoot ()
