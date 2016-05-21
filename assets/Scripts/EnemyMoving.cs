@@ -33,12 +33,12 @@ public class EnemyMoving : MonoBehaviour
 		if (!isPlayerInRange) {
 			if (isLeft) {
 				if (currentPosition.x < startPosition.x + range)
-					enemyBody.AddForce (-Vector2.left * speed);
+					enemyBody.velocity = new Vector2(-Vector2.left.x * speed, enemyBody.velocity.y);
 				else
 					isLeft = false;
 			} else {
 				if (currentPosition.x > startPosition.x - range)
-					enemyBody.AddForce (Vector2.left * speed);
+					enemyBody.velocity = new Vector2(Vector2.left.x * speed, enemyBody.velocity.y);
 				else
 					isLeft = true;
 			}
@@ -47,9 +47,9 @@ public class EnemyMoving : MonoBehaviour
 		if (playerPosition.x >= currentPosition.x - seeRange && playerPosition.x <= currentPosition.x + seeRange) {
 			if (playerPosition.x - currentPosition.x < 0) {
 				isPlayerInRange = true;
-				enemyBody.AddForce (Vector2.left * speed);
+				enemyBody.velocity = new Vector2(Vector2.left.x * speed, enemyBody.velocity.y);
 			} else if (playerPosition.x - currentPosition.x > 0) {
-				enemyBody.AddForce (-Vector2.left * speed);
+				enemyBody.velocity = new Vector2(-Vector2.left.x * speed, enemyBody.velocity.y);
 				isPlayerInRange = true;
 			} 
 		} else { 
