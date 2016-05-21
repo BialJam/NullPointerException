@@ -6,12 +6,16 @@ public class KillEnemy : MonoBehaviour {
 
 	public GameObject enemy;
 	public int offset;
+	private GameObject thisObject;
 	private GameObject dupEnemy1 = null;
 	private GameObject dupEnemy2 = null;
 	public bool duplicated = false;
+	int i = 0;
 	// Use this for initialization
 	void Start () {
 		//enemy = GameObject.FindWithTag ("enemy");
+		//enemy = this.gameObject;
+		thisObject = this.gameObject;
 	}
 	
 	// Update is called once per frame
@@ -29,10 +33,18 @@ public class KillEnemy : MonoBehaviour {
 		
 		if (coll.name == "killPoint")
 		if (duplicated == false) {
-			
-			dupEnemy1 = Instantiate (Resources.Load (enemy.name), new Vector3(enemy.transform.position.x-offset,enemy.transform.position.y,enemy.transform.position.z), Quaternion.identity) as GameObject;
+			float xPos = thisObject.transform.position.x;
+			float yPos = thisObject.transform.position.y;
+
+			string[] splitted = enemy.name.Split (' ');
+			string nameToInstantiate = splitted [0];
+
+
+			Debug.Log (nameToInstantiate);
+			dupEnemy1 = Instantiate (Resources.Load (nameToInstantiate), new Vector3(xPos-offset,yPos,enemy.transform.position.z), Quaternion.identity) as GameObject;
+			dupEnemy1.name = "dupEnemy" + System.Convert.ToString(i);
 			dupEnemy1.GetComponent<KillEnemy> ().duplicated = true;
-			dupEnemy2 = Instantiate (Resources.Load(enemy.name),new Vector3(enemy.transform.position.x+offset,enemy.transform.position.y,enemy.transform.position.z),Quaternion.identity) as GameObject;
+			dupEnemy2 = Instantiate (Resources.Load(nameToInstantiate),new Vector3(xPos+offset,yPos,enemy.transform.position.z),Quaternion.identity) as GameObject;
 			dupEnemy2.GetComponent<KillEnemy> ().duplicated = true;
 			Destroy (gameObject);
 			duplicated = true;
