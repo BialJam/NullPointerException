@@ -9,6 +9,7 @@ public class KillEnemy : MonoBehaviour {
 	private GameObject thisObject;
 	private GameObject dupEnemy1 = null;
 	private GameObject dupEnemy2 = null;
+    private Animator anim;
 	public bool duplicated = false;
 	int i = 0;
 	// Use this for initialization
@@ -27,8 +28,7 @@ public class KillEnemy : MonoBehaviour {
 	{
 		duplicated = true;
 	}
-
-
+		
 	void OnTriggerEnter2D (Collider2D coll) {
 		
 		if (coll.name == "killPoint")
@@ -52,7 +52,24 @@ public class KillEnemy : MonoBehaviour {
 			
 			Destroy (gameObject);
 		}
+	}
 			
+    void OnTriggerEnter2D(Collider2D coll) {
+
+        if (coll.name == "killPoint") {
+            if (duplicated == false) {
+
+            dupEnemy1 = Instantiate(Resources.Load(enemy.name), new Vector3(enemy.transform.position.x - offset, enemy.transform.position.y, enemy.transform.position.z), Quaternion.identity) as GameObject;
+            dupEnemy1.GetComponent<KillEnemy>().duplicated = true;
+            dupEnemy2 = Instantiate(Resources.Load(enemy.name), new Vector3(enemy.transform.position.x + offset, enemy.transform.position.y, enemy.transform.position.z), Quaternion.identity) as GameObject;
+            dupEnemy2.GetComponent<KillEnemy>().duplicated = true;
+            Destroy(gameObject);
+            duplicated = true;
+        } else {
+            Destroy(gameObject);
+        }
+            
+    }	
         if (coll.name == "hero")
         {
             PlayerStats.Lifes--;
