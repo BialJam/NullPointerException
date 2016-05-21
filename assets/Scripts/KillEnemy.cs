@@ -52,5 +52,11 @@ public class KillEnemy : MonoBehaviour {
 			
 			Destroy (gameObject);
 		}
+
+        if (coll.name == "hero")
+        {
+            PlayerStats.Lifes--;
+            SceneManager.LoadScene(PlayerStats.ActualScene);
+        }
 	}
 }
