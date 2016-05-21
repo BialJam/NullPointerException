@@ -21,8 +21,8 @@ public class GoToShaman : MonoBehaviour {
 	
 
 	void Update () {
-		float moveHorizontal = 1f;
-		if (player.transform.position.x < -2.5) 
+		float moveHorizontal = 1.7f;
+		if (player.transform.position.x < -8.3) 
 		{
 			playerBody.velocity = new Vector2 (moveHorizontal, playerBody.velocity.y);
 			anim.SetFloat ("speed", 1);

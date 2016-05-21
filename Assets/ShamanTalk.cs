@@ -81,7 +81,7 @@ public class ShamanTalk : MonoBehaviour {
 		// 1
 		npcRenderer.enabled = true;
 		playerRenderer.enabled = false;
-		npcTextMesh.text = "Witaj mlody czlowieku. Wygladasz na dzielnego woja o czystym sercu!";
+		npcTextMesh.text = "Witaj mlody czlowieku.\nWygladasz na dzielnego woja o czystym sercu!";
 		while (!Input.GetKey (KeyCode.Space) ) {
 			yield return null;
 		}
@@ -114,6 +114,8 @@ public class ShamanTalk : MonoBehaviour {
 
 		npcRenderer.enabled = false;
 		playerRenderer.enabled = false;
+
+
 	}
 
 }
