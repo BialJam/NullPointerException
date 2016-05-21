@@ -10,7 +10,7 @@ public class playerMovement : MonoBehaviour {
     public Transform bullet;
     public float fireRate = 0.5F;
 
-    private bool dirToRight = true;   
+    public static bool dirToRight = true;   
     private float nextFire = 0.0F;
     private Animator anim;
 
@@ -63,7 +63,6 @@ public class playerMovement : MonoBehaviour {
     {
         Vector2 pos = gameObject.transform.position;
         Instantiate(bullet, pos, Quaternion.identity);
-        bullet.GetComponent<BulletMoving>().setDirection(dirToRight);
     }
 }
 

@@ -9,7 +9,7 @@ public class BulletMoving : MonoBehaviour {
     
 	void Start () {
         cam = Camera.main;
-        direction = true;
+        direction = playerMovement.dirToRight;
 	}
 	
 	void Update () {
@@ -25,11 +25,6 @@ public class BulletMoving : MonoBehaviour {
         if (gameObject.transform.position.x < position1 || gameObject.transform.position.x > position2)
             Destroy(gameObject);
         Debug.Log(direction);
-    }
-
-    public void setDirection (bool dir)
-    {
-        this.direction = dir;
     }
 
     void OnTriggerEnter2D (Collider2D element)
