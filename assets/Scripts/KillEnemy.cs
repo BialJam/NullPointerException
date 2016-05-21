@@ -39,8 +39,6 @@ public class KillEnemy : MonoBehaviour {
 			string[] splitted = enemy.name.Split (' ');
 			string nameToInstantiate = splitted [0];
 
-
-			Debug.Log (nameToInstantiate);
 			dupEnemy1 = Instantiate (Resources.Load (nameToInstantiate), new Vector3(xPos-offset,yPos,enemy.transform.position.z), Quaternion.identity) as GameObject;
 			dupEnemy1.name = "dupEnemy" + System.Convert.ToString(i);
 			dupEnemy1.GetComponent<KillEnemy> ().duplicated = true;

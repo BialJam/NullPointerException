@@ -1,9 +1,10 @@
 fileFormatVersion: 2
 guid: 661804af98a79d94da941fb25c41568a
-timeCreated: 1463845038
+timeCreated: 1463868449
 licenseType: Free
 TextureImporter:
-  fileIDToRecycleName: {}
+  fileIDToRecycleName:
+    21300000: platformbasic_0
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -38,18 +39,33 @@ TextureImporter:
   rGBM: 0
   compressionQuality: 50
   allowsAlphaSplitting: 0
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spriteBorder: {x: 1, y: 0, z: 1, w: 0}
+  spriteBorder: {x: 96, y: 0, z: 1, w: 0}
   spritePixelsToUnits: 100
   alphaIsTransparency: 1
   textureType: 8
   buildTargetSettings: []
   spriteSheet:
-    sprites: []
+    sprites:
+    - name: platformbasic_0
+      rect:
+        serializedVersion: 2
+        x: 34
+        y: 0
+        width: 146
+        height: 214
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 2, w: 0}
+      outline:
+      - - {x: -73, y: 107}
+        - {x: -73, y: -107}
+        - {x: 73, y: -107}
+        - {x: 73, y: 107}
     outline: []
   spritePackingTag: 
   userData: 

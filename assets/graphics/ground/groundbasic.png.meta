@@ -1,9 +1,33 @@
 fileFormatVersion: 2
 guid: acaaa3a1e4b643d44a44b9ccf714fcef
-timeCreated: 1463844133
+timeCreated: 1463868261
 licenseType: Free
 TextureImporter:
-  fileIDToRecycleName: {}
+  fileIDToRecycleName:
+    21300000: groundbasic_0
+    21300002: groundbasic_1
+    21300004: groundbasic_2
+    21300006: groundbasic_3
+    21300008: groundbasic_4
+    21300010: groundbasic_5
+    21300012: groundbasic_6
+    21300014: groundbasic1
+    21300016: groundbasic_8
+    21300018: groundbasic_9
+    21300020: groundbasic_10
+    21300022: groundbasic_11
+    21300024: groundbasic_12
+    21300026: groundbasic_13
+    21300028: groundbasic_14
+    21300030: groundbasic_15
+    21300032: groundbasic_16
+    21300034: groundbasic_17
+    21300036: groundbasic_18
+    21300038: groundbasic_19
+    21300040: groundbasic_20
+    21300042: groundbasic_21
+    21300044: groundbasic_22
+    21300046: groundbasic_23
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -38,7 +62,7 @@ TextureImporter:
   rGBM: 0
   compressionQuality: 50
   allowsAlphaSplitting: 0
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -49,7 +73,22 @@ TextureImporter:
   textureType: 8
   buildTargetSettings: []
   spriteSheet:
-    sprites: []
+    sprites:
+    - name: groundbasic_0
+      rect:
+        serializedVersion: 2
+        x: 5
+        y: 0
+        width: 169
+        height: 794
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -84.5, y: 397}
+        - {x: -84.5, y: -397}
+        - {x: 84.5, y: -397}
+        - {x: 84.5, y: 397}
     outline: []
   spritePackingTag: 
   userData: 
