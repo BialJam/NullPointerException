@@ -15,7 +15,6 @@ public class GetPoint : MonoBehaviour {
         if (hero.name == "hero")
         {
             PlayerStats.Points++;
-            Debug.Log(PlayerStats.Points);
             Destroy(gameObject);
         }
     }
