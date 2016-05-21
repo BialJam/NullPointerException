@@ -6,8 +6,9 @@ using UnityEngine.SceneManagement;
 public class TextPrinter : MonoBehaviour {
 
 	public string[] parts;
-	private Text text;
+	public int sceneToLoad;
 
+	private Text text;
 	void Start () {
 		text = GameObject.Find ("Text").GetComponent<Text> ();
 		StartCoroutine ("printText");
@@ -15,7 +16,7 @@ public class TextPrinter : MonoBehaviour {
 
 	void Update () {
 		if (Input.GetKey (KeyCode.KeypadEnter) || Input.GetKey (KeyCode.Return)) {
-			SceneManager.LoadScene (0);
+			SceneManager.LoadScene (sceneToLoad);
 		}
 	}
 
