@@ -63,6 +63,21 @@ public class NPCController : MonoBehaviour {
 		}
 }
 
+	void OnTriggerStay2D(Collider2D coll) {
+		if (coll.gameObject.name == "hero") {
+			spriteRenderer.sprite = secondSprite;
+			if (isFlipped)
+				spriteRenderer.flipX = false;
+
+			if (playerBody.transform.position.x > npcBody.transform.position.x) {
+				if (!isFlipped)
+					spriteRenderer.flipX = true;
+			} else {
+					spriteRenderer.flipX = false;
+			}
+		}
+	}
+
 	private bool checkIndex() {
 		if (index >= dialogs.Length) {
 			npcTextMesh.text = "";
