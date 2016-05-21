@@ -11,7 +11,7 @@ public class PointUpdate : MonoBehaviour {
     }
 	
 	public void UpdatePoints() {
-		GetComponent<Text>().text = "Points: " + PlayerStats.Points.ToString();
+		GetComponent<Text>().text = "Punkty:  " + PlayerStats.Points.ToString();
 	}
 
 }

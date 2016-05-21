@@ -4,15 +4,24 @@ using UnityEngine.UI;
 
 public class LifesUpdate : MonoBehaviour {
 
+    private int lifes;
+    public int id;
+
     void Start()
     {
-
+        initLifes();
         UpdateLifes();
     }
 
     public void UpdateLifes()
     {
+        lifes = PlayerStats.lifes;
+        if (id > lifes)
+            gameObject.GetComponent<Image>().enabled = false;
+    }
 
-        GetComponent<Text>().text = "Lifes:" + PlayerStats.Lifes.ToString();
+    public void initLifes()
+    {
+        gameObject.GetComponent<Image>().enabled = true;
     }
 }

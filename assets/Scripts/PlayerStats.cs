@@ -18,7 +18,11 @@ public static class PlayerStats {
         set
         {
             lifes = value;
-            GameObject.Find("Lifes").GetComponent<LifesUpdate>().UpdateLifes();
+            GameObject.Find("life1").GetComponent<LifesUpdate>().UpdateLifes();
+            GameObject.Find("life2").GetComponent<LifesUpdate>().UpdateLifes();
+            GameObject.Find("life3").GetComponent<LifesUpdate>().UpdateLifes();
+            GameObject.Find("life4").GetComponent<LifesUpdate>().UpdateLifes();
+            GameObject.Find("life5").GetComponent<LifesUpdate>().UpdateLifes();
             
         }
     } 
