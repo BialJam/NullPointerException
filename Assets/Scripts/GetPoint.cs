@@ -17,8 +17,9 @@ public class GetPoint : MonoBehaviour {
         if (hero.name == "hero" || hero.name == "CircleCollider")
         {
             PlayerStats.Points++;
-            AudioSource.PlayClipAtPoint(clip, transform.position);
+            
             Destroy(gameObject);
+			AudioSource.PlayClipAtPoint(clip, transform.position);
         }
     }
 }
