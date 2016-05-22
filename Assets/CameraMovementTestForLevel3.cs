@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class CameraMovement : MonoBehaviour {
+public class CameraMovementTestForLevel3 : MonoBehaviour {
 
 	private Vector2 velocity;
 
@@ -11,7 +11,7 @@ public class CameraMovement : MonoBehaviour {
 	GameObject player;
 
 	void Start () {
-		player = GameObject.FindGameObjectWithTag ("Player");
+        player = GameObject.Find("hero");
         int a;
 	}
 	
