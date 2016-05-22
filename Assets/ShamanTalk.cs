@@ -112,8 +112,13 @@ public class ShamanTalk : MonoBehaviour {
 		}
 		yield return new WaitForSeconds (0.2f);
 
-		npcRenderer.enabled = false;
-		playerRenderer.enabled = false;
+
+		while (!Input.GetKey (KeyCode.Space)) {
+			yield return null;
+		}
+		yield return new WaitForSeconds (0.2f);
+
+
 
 
 	}
