@@ -9,10 +9,13 @@ public class playerMovement : MonoBehaviour {
     public float speed;
     public Transform bullet;
     public float fireRate = 0.5F;
+    public LayerMask layer;
+    public Transform groundTester;
 
     public static bool dirToRight = true;   
     private float nextFire = 0.0F;
     private Animator anim;
+    
 
     void Start () {
 		playerBody = gameObject.GetComponent<Rigidbody2D>();
@@ -37,12 +40,11 @@ public class playerMovement : MonoBehaviour {
             dirToRight = !dirToRight;
             Flip();
         }
-        if (Input.GetKey (KeyCode.UpArrow) || Input.GetKey(KeyCode.W)) {
-			if (isJumping==false) {
+        /*if (Input.GetKey (KeyCode.UpArrow) || Input.GetKey(KeyCode.W) && (Physics2D.OverlapCircle(groundTester.position, 0.1f, layer))) {
 				playerBody.AddForce (Vector2.up * moveSpeedY);
 				isJumping = true;
-			}
-		}
+		} */
+        jump();
         if (Input.GetKey(KeyCode.Space) && Time.time > nextFire)
         {
             nextFire = Time.time + fireRate;
@@ -64,6 +66,13 @@ public class playerMovement : MonoBehaviour {
     {
         Vector2 pos = gameObject.transform.position;
         Instantiate(bullet, pos, Quaternion.identity);
+    }
+    void jump()
+    {
+        if (Input.GetKeyDown(KeyCode.UpArrow) && Physics2D.OverlapCircle(groundTester.position, 0.2f, layer))
+        {
+            playerBody.AddForce(new Vector2(0f, moveSpeedY));
+        }
     }
 }
 
