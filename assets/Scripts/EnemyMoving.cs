@@ -30,12 +30,17 @@ public class EnemyMoving : MonoBehaviour
 
 	void Update ()
 	{
+
         if (!GameObject.Find("hero").GetComponent<playerMovement>().getCanRun())
             return;
         playerPosition = playerBody.position;
 		currentPosition = enemyBody.position;
 
 		if (!isPlayerInRange) {
+			if (enemyBody.velocity.x == 0) {
+				anim.Stop ();
+				anim.enabled = false;
+			} else
 			if (isLeft) {
 				if (currentPosition.x < startPosition.x + range)
 					enemyBody.velocity = new Vector2 (-Vector2.left.x * speed, enemyBody.velocity.y);
