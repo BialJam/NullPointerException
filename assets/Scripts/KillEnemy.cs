@@ -5,6 +5,7 @@ using System.Collections;
 public class KillEnemy : MonoBehaviour {
 
 	public GameObject enemy;
+    public bool water;
 	public int offset;
 	private GameObject thisObject;
 	private GameObject dupEnemy1 = null;
@@ -31,7 +32,7 @@ public class KillEnemy : MonoBehaviour {
 		
 	void OnTriggerEnter2D (Collider2D coll) {
 		
-		if (coll.name == "groundTester" && GameObject.Find("hero").GetComponent<playerMovement>().getCanRun())
+		if (coll.name == "groundTester" && GameObject.Find("hero").GetComponent<playerMovement>().getCanRun() && !water)
 		if (duplicated == false) {
 			float xPos = thisObject.transform.position.x;
 			float yPos = thisObject.transform.position.y;
