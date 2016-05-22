@@ -5,6 +5,7 @@ using System.Collections;
 public class KillEnemy : MonoBehaviour {
 
 	public GameObject enemy;
+    public AudioClip clip;
     public bool water;
 	public int offset;
 	private GameObject thisObject;
@@ -56,6 +57,7 @@ public class KillEnemy : MonoBehaviour {
             if (coll.GetComponent<playerMovement>().getCanRun())
             {
                 coll.gameObject.GetComponent<Animator>().SetTrigger("deathAnimation");
+                AudioSource.PlayClipAtPoint(clip, transform.position);
                 coll.GetComponent<playerMovement>().setCanRun(false);
             }
                 

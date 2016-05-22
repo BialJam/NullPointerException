@@ -3,6 +3,8 @@ using System.Collections;
 
 public class GetPoint : MonoBehaviour {
 
+    public AudioClip clip;
+
 	void Start () {
 	
 	}
@@ -15,6 +17,7 @@ public class GetPoint : MonoBehaviour {
         if (hero.name == "hero" || hero.name == "CircleCollider")
         {
             PlayerStats.Points++;
+            AudioSource.PlayClipAtPoint(clip, transform.position);
             Destroy(gameObject);
         }
     }
