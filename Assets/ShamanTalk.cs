@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.SceneManagement;
 
 public class ShamanTalk : MonoBehaviour {
 
@@ -118,6 +119,7 @@ public class ShamanTalk : MonoBehaviour {
 		}
 		yield return new WaitForSeconds (0.2f);
 
+		SceneManager.LoadScene (3);
 
 
 

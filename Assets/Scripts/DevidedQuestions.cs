@@ -35,12 +35,11 @@ public class DevidedQuestions : MonoBehaviour {
 
 	public void checkAnswer() {
 		userAnswer = System.Convert.ToInt32(inputField.text);
-
 		if (userAnswer == answer)
-			SceneManager.LoadScene (PlayerStats.actualScene + 1);
+			SceneManager.LoadScene (PlayerStats.scene);
 		else {
 			PlayerStats.lifes--;
-			SceneManager.LoadScene (PlayerStats.actualScene + 1);
+			SceneManager.LoadScene (PlayerStats.scene);
 		}
 	}
 		

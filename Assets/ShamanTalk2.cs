@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.SceneManagement;
 
 public class ShamanTalk2 : MonoBehaviour {
 
@@ -107,6 +108,11 @@ public class ShamanTalk2 : MonoBehaviour {
 		npcRenderer.enabled = false;
 		playerRenderer.enabled = false;
 
+		while (!Input.GetKey (KeyCode.Space)) {
+			yield return null;
+		}
+
+		SceneManager.LoadScene (5);
 
 	}
 

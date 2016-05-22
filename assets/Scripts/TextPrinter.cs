@@ -15,7 +15,7 @@ public class TextPrinter : MonoBehaviour {
 	}
 
 	void Update () {
-		if (Input.GetKey (KeyCode.KeypadEnter) || Input.GetKey (KeyCode.Return)) {
+		if (Input.GetKey (KeyCode.KeypadEnter) || Input.GetKey (KeyCode.Return) || Input.GetKey(KeyCode.Space)) {
 			SceneManager.LoadScene (sceneToLoad);
 		}
 	}

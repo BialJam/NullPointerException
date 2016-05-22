@@ -1,10 +1,12 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.SceneManagement;
 
 public static class PlayerStats {
 
     public static int lifes = 5;
     public static string actualScene = "mainScene";
+	public static int scene = 5; //cause it is first lvl
     public static int points = 0;
 
 
@@ -25,7 +27,9 @@ public static class PlayerStats {
             GameObject.Find("life5").GetComponent<LifesUpdate>().UpdateLifes();
             if (lifes == 0)
             {
-                // PRZEJSCIE DO MENU GLOWNEGO LIFES = 5, POINTS = 0
+				SceneManager.LoadScene (0);
+				lifes = 5;
+				points = 0;
             }
             
         }
@@ -41,6 +45,19 @@ public static class PlayerStats {
             actualScene = value;
         }
     }
+
+	public static int Scene {
+
+		get {
+			return scene;
+		}
+
+		set {
+			scene = value;
+		}
+
+	}
+
     public static int Points
     {
         get
