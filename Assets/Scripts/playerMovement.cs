@@ -17,7 +17,7 @@ public class playerMovement : MonoBehaviour {
     public static bool dirToRight = true;
     private float nextFire = 0.0F;
     private Animator anim;
-    private bool canRun;
+    public bool canRun;
 
 
     void Start() {
