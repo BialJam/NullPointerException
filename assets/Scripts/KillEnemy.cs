@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
-using UnityEngine.SceneManagement;
+
 
 public class KillEnemy : MonoBehaviour {
 
@@ -31,14 +31,13 @@ public class KillEnemy : MonoBehaviour {
 		
 	void OnTriggerEnter2D (Collider2D coll) {
 		
-		if (coll.name == "killPoint")
+		if (coll.name == "groundTester")
 		if (duplicated == false) {
 			float xPos = thisObject.transform.position.x;
 			float yPos = thisObject.transform.position.y;
 
 			string[] splitted = enemy.name.Split (' ');
 			string nameToInstantiate = splitted [0];
-
 			dupEnemy1 = Instantiate (Resources.Load (nameToInstantiate), new Vector3(xPos-offset,yPos,enemy.transform.position.z), Quaternion.identity) as GameObject;
 			dupEnemy1.name = "dupEnemy" + System.Convert.ToString(i);
 			dupEnemy1.GetComponent<KillEnemy> ().duplicated = true;
@@ -51,10 +50,11 @@ public class KillEnemy : MonoBehaviour {
 			Destroy (gameObject);
 		}
 
-        if (coll.name == "hero")
+        if (coll.gameObject.name == "hero")
         {
-            PlayerStats.Lifes--;
-            SceneManager.LoadScene(PlayerStats.ActualScene);
+            coll.gameObject.GetComponent<Animator>().SetTrigger("deathAnimation");
+            if (coll.GetComponent<playerMovement>().getCanRun())
+            coll.GetComponent<playerMovement>().setCanRun (false);
         }
 	}
 }
