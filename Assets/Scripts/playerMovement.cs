@@ -86,11 +86,9 @@ public class playerMovement : MonoBehaviour {
     
     void restartHero()
     {
-        Debug.Log("co sie tu dzieje sie");
-        canRun = true;
-
         gameObject.transform.position = startPoint.position;
-        PlayerStats.lifes -= 1;
+        canRun = true;
+        PlayerStats.Lifes -= 1;
     }
     public void setCanRun (bool var)
     {

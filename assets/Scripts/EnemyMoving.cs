@@ -30,7 +30,9 @@ public class EnemyMoving : MonoBehaviour
 
 	void Update ()
 	{
-		playerPosition = playerBody.position;
+        if (!GameObject.Find("hero").GetComponent<playerMovement>().getCanRun())
+            return;
+        playerPosition = playerBody.position;
 		currentPosition = enemyBody.position;
 
 		if (!isPlayerInRange) {

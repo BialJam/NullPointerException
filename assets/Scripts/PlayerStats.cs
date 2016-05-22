@@ -23,6 +23,10 @@ public static class PlayerStats {
             GameObject.Find("life3").GetComponent<LifesUpdate>().UpdateLifes();
             GameObject.Find("life4").GetComponent<LifesUpdate>().UpdateLifes();
             GameObject.Find("life5").GetComponent<LifesUpdate>().UpdateLifes();
+            if (lifes == 0)
+            {
+                // PRZEJSCIE DO MENU GLOWNEGO LIFES = 5, POINTS = 0
+            }
             
         }
     } 

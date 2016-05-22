@@ -31,7 +31,7 @@ public class KillEnemy : MonoBehaviour {
 		
 	void OnTriggerEnter2D (Collider2D coll) {
 		
-		if (coll.name == "groundTester")
+		if (coll.name == "groundTester" && GameObject.Find("hero").GetComponent<playerMovement>().getCanRun())
 		if (duplicated == false) {
 			float xPos = thisObject.transform.position.x;
 			float yPos = thisObject.transform.position.y;
@@ -52,9 +52,12 @@ public class KillEnemy : MonoBehaviour {
 
         if (coll.gameObject.name == "hero")
         {
-            coll.gameObject.GetComponent<Animator>().SetTrigger("deathAnimation");
             if (coll.GetComponent<playerMovement>().getCanRun())
-            coll.GetComponent<playerMovement>().setCanRun (false);
+            {
+                coll.gameObject.GetComponent<Animator>().SetTrigger("deathAnimation");
+                coll.GetComponent<playerMovement>().setCanRun(false);
+            }
+                
         }
 	}
 }
